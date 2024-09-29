@@ -2,7 +2,7 @@
 FROM node:20
 
 # Set the working directory
-WORKDIR /d/Docker/
+WORKDIR /d/Docker/Basics
 
 # Copy package.json and install dependencies
 COPY package*.json ./
