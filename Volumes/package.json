@@ -1,15 +1,18 @@
 {
-    "name": "feedback-server",
-    "version": "1.0.0",
-    "description": "A simple feedback server",
-    "main": "server.js",
-    "scripts": {
-      "start": "node server.js"
-    },
-    "dependencies": {},
-    "devDependencies": {},
-    "keywords": [],
-    "author": "",
-    "license": "ISC"
-  }
-  
+  "name": "feedback-server",
+  "version": "1.0.0",
+  "description": "A simple feedback server",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

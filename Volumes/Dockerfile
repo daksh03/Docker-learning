@@ -2,12 +2,16 @@ FROM node
 
 WORKDIR /Docker/Volumes
 
+# Copy package.json first
 COPY package.json .
 
-RUN npm install
+# Install nodemon as a dev dependency
+RUN npm install && npm install -g nodemon
 
+# Copy the rest of the application code
 COPY . .
 
 EXPOSE 80
 
-CMD ["node","server.js"]
+# Start the application with nodemon
+CMD ["nodemon", "server.js"]
