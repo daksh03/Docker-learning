@@ -3,9 +3,10 @@ const fs = require('fs');
 const path = require('path');
 const url = require('url');
 const querystring = require('querystring');
+require('dotenv').config();  // Automatically load .env variables
 
 const hostname = '0.0.0.0';
-const port = 80; // Change to port 3000
+const port = process.env.PORT || 80;  // Use PORT from .env file or default to 80
 const feedbackFolder = path.join(__dirname, 'feedback');
 const tempFolder = path.join(__dirname, 'temp');
 
@@ -22,8 +23,7 @@ const server = http.createServer((req, res) => {
 
     if (req.method === 'GET' && parsedUrl.pathname === '/') {
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(`
-            <!DOCTYPE html>
+        res.end(`<!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
@@ -69,15 +69,14 @@ const server = http.createServer((req, res) => {
                 </style>
             </head>
             <body>
-                <h1>Submit Your Feedback _updated</h1>
+                <h1>Submit Your Feedback</h1>
                 <form action="/submit" method="POST">
                     <input type="text" name="title" placeholder="Title" required>
                     <textarea name="feedback" placeholder="Your feedback" required></textarea>
                     <button type="submit">Submit</button>
                 </form>
             </body>
-            </html>
-        `);
+            </html>`);
     } else if (req.method === 'POST' && parsedUrl.pathname === '/submit') {
         let body = '';
 
@@ -107,8 +106,7 @@ const server = http.createServer((req, res) => {
 
         // Serve feedback.html with inline CSS
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(`
-            <!DOCTYPE html>
+        res.end(`<!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
@@ -143,13 +141,11 @@ const server = http.createServer((req, res) => {
                 <p>Feedback: ${feedback}</p>
                 <a href="/">Go back</a>
             </body>
-            </html>
-        `);
+            </html>`);
     } else if (req.method === 'GET' && parsedUrl.pathname === '/exist.html') {
         // Serve exist.html with inline CSS
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        res.end(`
-            <!DOCTYPE html>
+        res.end(`<!DOCTYPE html>
             <html lang="en">
             <head>
                 <meta charset="UTF-8">
@@ -180,8 +176,7 @@ const server = http.createServer((req, res) => {
                 <p>Your feedback has been stored temporarily.</p>
                 <a href="/">Go back</a>
             </body>
-            </html>
-        `);
+            </html>`);
     } else if (req.method === 'GET' && parsedUrl.pathname.startsWith('/feedback/')) {
         // Serve feedback text files
         const fileName = parsedUrl.pathname.split('/feedback/')[1];
