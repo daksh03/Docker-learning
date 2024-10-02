@@ -20,6 +20,9 @@
 - **Build an image from a Dockerfile**:
   docker build -t <image_name>:<tag> .
 
+- **Build an image from a Dockerfile with Arguments**:
+  docker build -t <image_name>:<tag> --build-arg <argument (For ex.PORT=50>
+
 - **Run a container**:
   docker run <options> <image_name>
 
