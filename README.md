@@ -29,6 +29,12 @@
   - **Run a container with Multiple Bind Mount**:
 docker run -v /path/on/host1:/path/in/container1 -v /path/on/host2:/path/in/container2 <image_name>
 
+ - **Run a container with Named Volume**:
+docker run -v <volume_name>:/path/in/container <image_name>
+
+ - **Run a container with environment variables**:
+docker run --env-file ./.env <image_name>
+
 - **Stop a running container**:
   docker stop <container_id>
 
