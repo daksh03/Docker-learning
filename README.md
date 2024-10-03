@@ -59,6 +59,7 @@ docker run --env-file ./.env <image_name>
   docker volume rm <volume_name>
 
 ## Networking
+**Containers in same Network can connect with each other**
 
 - **List networks**:
   docker network ls
