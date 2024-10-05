@@ -38,6 +38,8 @@ docker run -v <volume_name>:/path/in/container <image_name>
  - **Run a container with environment variables**:
 docker run --env-file ./.env <image_name>
 
+- **To go inside the container**:
+docker exec -it <container_name> bash
 - **Stop a running container**:
   docker stop <container_id>
 
