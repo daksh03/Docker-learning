@@ -70,6 +70,8 @@ docker exec -it <container_name> bash
   docker network create <network_name>
 
 - **Connect a container to a network**:
+
+- docker run <container_name> --network <network_name> <image_name>
   docker network connect <network_name> <container_id>
 
 ## Miscellaneous
