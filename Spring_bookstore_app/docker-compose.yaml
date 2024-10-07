@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  project:
+    build: .
+    ports:
+      - "8989:8989"
+  mongodb:
+    image: 'mongo'   
+    ports:
+      - "27017:27017"
