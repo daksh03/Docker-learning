@@ -1,10 +1,26 @@
 version: '3.8'
 services:
-  project:
-    build: .
-    ports:
-      - "8989:8989"
   mongodb:
-    image: 'mongo'   
+    image: 'mongo:latest'
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=daksh
+      - MONGO_INITDB_ROOT_PASSWORD=daksh1
+      - MONGO_INITDB_DATABASE=bookstore
     ports:
       - "27017:27017"
+    volumes:
+      - ./data/db:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    networks:
+      - my_network  
+  project:
+    depends_on:
+      - mongodb
+    build: .
+    container_name: project
+    ports:
+      - "8989:8989"
+    networks:
+      my_network:
+        driver: bridge
