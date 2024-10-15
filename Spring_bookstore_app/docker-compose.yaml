@@ -13,7 +13,8 @@ services:
       - ./data/db:/data/db
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
     networks:
-      - my_network  
+      - my_network
+
   project:
     depends_on:
       - mongodb
@@ -22,5 +23,8 @@ services:
     ports:
       - "8989:8989"
     networks:
-      my_network:
-        driver: bridge
+      - my_network
+
+networks:
+  my_network:
+    driver: bridge
