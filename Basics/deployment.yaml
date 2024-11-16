@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: practice-app
+  labels:
+    app: practice-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: practice-app
+  template:
+    metadata:
+      labels:
+        app: practice-app
+    spec:
+      containers:
+      - name: practice-container
+        image: daksh0703/practice
+        ports:
+        - containerPort: 3008
+        resources: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: practice-app-service
+spec:
+  selector:
+    app: practice-app
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 3008
+    targetPort: 3008
