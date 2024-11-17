@@ -41,6 +41,9 @@
 - **To go inside the container**:  
   `docker exec -it <container_name> bash`
 
+  - **View container resource usage**:  
+  `docker stats <container_id>`
+
 - **Stop a running container**:  
   `docker stop <container_id>`
 
